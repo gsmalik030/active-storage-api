@@ -35,7 +35,7 @@ class PostsController < ApplicationController
 
   def latest
     @post = Post.last
-    render json: @post
+    render json: PostSerializer.new(@post).serializable_hash[:data][:attributes]
   end
 
   # DELETE /posts/1
